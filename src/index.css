@@ -1,0 +1,98 @@
+:root {
+  --bg: #e8f1eb;
+  --bg-alt: #ffffff;
+  --surface: rgba(255, 255, 255, 0.75);
+  --text: #0e3142;
+  --text-h: #060b08;
+  --muted: rgba(14, 49, 66, 0.65);
+  --border: rgba(14, 49, 66, 0.12);
+  --border-strong: rgba(14, 49, 66, 0.18);
+  --accent: #23af6a;
+  --accent-secondary: #0e3142;
+  --shadow-soft: 0 24px 60px rgba(6, 11, 8, 0.16);
+  --sans: 'Avenir Next', 'Trebuchet MS', sans-serif;
+  --heading: 'Gill Sans', 'Avenir Next Condensed', 'Trebuchet MS', sans-serif;
+
+  font: 18px/1.5 var(--sans);
+  letter-spacing: 0.01em;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(35, 175, 106, 0.35), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(14, 49, 66, 0.12), transparent 28%),
+    linear-gradient(180deg, var(--bg-alt), var(--bg));
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: transparent;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(14, 49, 66, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 49, 66, 0.03) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent 80%);
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+}
+
+#root {
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--heading);
+  color: var(--text-h);
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: clamp(3rem, 6vw, 5.6rem);
+  line-height: 0.94;
+}
+
+h2 {
+  margin: 0.85rem 0;
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  line-height: 1;
+}
+
+p {
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  :root {
+    font-size: 16px;
+  }
+
+  #root {
+    width: min(100%, calc(100% - 1rem));
+  }
+}
