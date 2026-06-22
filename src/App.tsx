@@ -138,7 +138,7 @@ function EventsPage() {
       <section className="page-section">
         <div className="section-heading">
           <p className="eyebrow">Events</p>
-          <h2>Every legal event format in one calendar.</h2>
+          <h2>Calendar of upcoming legal events.</h2>
         </div>
         <div className="feature-grid">
           {eventHighlights.map((event) => (
@@ -182,13 +182,12 @@ function AboutPage() {
           <p className="eyebrow">About Us</p>
           <h2>We build software for real courtroom operations.</h2>
           <p className="hero-text">
-            Court Rebel was created with input from clerks, administrators, and legal aid
-            organizers who needed a more reliable way to run court events and communicate change.
+            Court Rebel is for those who manage and participate in self-representation.
           </p>
         </div>
         <div className="quote-card">
           <p className="quote-text">
-            “Our mission is to reduce procedural friction so courts can serve people faster and
+            “Our mission is to reduce procedural friction so people can navigate the legal system faster and
             with more clarity.”
           </p>
           <p className="quote-meta">Court Rebel Team</p>
