@@ -64,9 +64,9 @@ function Layout({ children }: { children: ReactNode }) {
     <div className="page-shell">
       <header className="topbar">
         <div className="brand-block">
-          <span className="brand-mark" aria-hidden="true">
-            CR
-          </span>
+          <NavLink to="/" className="brand-mark" aria-label="Court Rebel home">
+            <img src="/SelfRepU_full-color.jpg" alt="" />
+          </NavLink>
           <div>
             <p className="brand-name">Court Rebel</p>
             <p className="brand-tag">Legal court event scheduling platform</p>
