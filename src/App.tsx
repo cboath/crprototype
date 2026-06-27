@@ -23,7 +23,7 @@ const eventHighlights = [
 
 const faqItems = [
   {
-    question: "Can Court Rebel handle sealed or restricted hearings?",
+    question: "Can Self Rep U handle sealed or restricted hearings?",
     answer:
       "Probably, I don't know any of this stuff.",
   },
@@ -35,7 +35,7 @@ const faqItems = [
   {
     question: "Who is this for?",
     answer:
-      "Court Rebel is for YOU.",
+      "Self Rep U is for YOU.",
   },
 ]
 
@@ -65,11 +65,11 @@ function Layout({ children }: { children: ReactNode }) {
     <div className="page-shell">
       <header className="topbar">
         <div className="brand-block">
-          <NavLink to="/" className="brand-mark" aria-label="Court Rebel home">
+          <NavLink to="/" className="brand-mark" aria-label="Self Rep U home">
             <img src="/SelfRepU_full-color.png" alt="" />
           </NavLink>
           <div>
-            <p className="brand-name">Court Rebel</p>
+            <p className="brand-name">Self Rep U</p>
             <p className="brand-tag">Legal stuff and things</p>
           </div>
         </div>
@@ -95,14 +95,14 @@ function Layout({ children }: { children: ReactNode }) {
 
       <footer className="site-footer">
         <div className="site-footer-row">
-          <p>Court Rebel</p>
+          <p>Self Rep U</p>
           <p>Purpose-built happy times.</p>
         </div>
         <p className="legal-disclaimer">
           The information provided on this site is for general informational purposes only and
-          does not constitute legal advice. Use of Court Rebel does not create an
+          does not constitute legal advice. Use of Self Rep U does not create an
           attorney-client relationship. Consult a qualified attorney regarding any specific legal
-          matter. &copy; {new Date().getFullYear()} Court Rebel. All rights reserved.
+          matter. &copy; {new Date().getFullYear()} Self Rep U. All rights reserved.
         </p>
       </footer>
     </div>
@@ -117,7 +117,7 @@ function HomePage() {
           <p className="eyebrow">YOU CAN DO IT!</p>
           <h1>That judge won't know what hit them.</h1>
           <p className="hero-text">
-            Court Rebel does stuff to help you navigate the legal system.
+            Self Rep U does stuff to help you navigate the legal system.
           </p>
           <div className="hero-actions">
             <NavLink to="/scheduling" className="primary-button">
@@ -183,7 +183,7 @@ function AboutPage() {
           <p className="eyebrow">About Us</p>
           <h2>We build confidence for real courtroom operations.</h2>
           <p className="hero-text">
-            Court Rebel is for those who manage and participate in self-representation.
+            Self Rep U is for those who manage and participate in self-representation.
           </p>
         </div>
         <div className="quote-card">
@@ -191,7 +191,7 @@ function AboutPage() {
             “Our mission is to reduce procedural friction so people can navigate the legal system faster and
             with more clarity.”
           </p>
-          <p className="quote-meta">Court Rebel Team</p>
+          <p className="quote-meta">Self Rep U Team</p>
         </div>
       </section>
     </Layout>
@@ -258,7 +258,7 @@ function RegisterPage() {
       <section className="page-section">
         <div className="section-heading narrow">
           <p className="eyebrow">Register</p>
-          <h2>Create your Court Rebel account.</h2>
+          <h2>Create your Self Rep U account.</h2>
         </div>
         <form className="register-form" onSubmit={handleSubmit}>
           <div className="form-row">

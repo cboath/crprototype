@@ -17,7 +17,7 @@
   letter-spacing: 0.01em;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(35, 175, 106, 0.35), transparent 32%),
+    radial-gradient(circle at top left, rgba(31, 122, 197, 0.35), transparent 32%),
     radial-gradient(circle at bottom right, rgba(14, 49, 66, 0.12), transparent 28%),
     linear-gradient(180deg, var(--bg-alt), var(--bg));
   font-synthesis: none;
