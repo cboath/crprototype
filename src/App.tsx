@@ -1,6 +1,7 @@
 import "./App.css"
 import { NavLink, Navigate, Route, Routes } from "react-router-dom"
-import type { ReactNode } from "react"
+import { useState } from "react"
+import type { FormEvent, ReactNode } from "react"
 
 const eventHighlights = [
   {
@@ -65,7 +66,7 @@ function Layout({ children }: { children: ReactNode }) {
       <header className="topbar">
         <div className="brand-block">
           <NavLink to="/" className="brand-mark" aria-label="Court Rebel home">
-            <img src="/SelfRepU_full-color.jpg" alt="" />
+            <img src="/SelfRepU_full-color.png" alt="" />
           </NavLink>
           <div>
             <p className="brand-name">Court Rebel</p>
@@ -77,6 +78,7 @@ function Layout({ children }: { children: ReactNode }) {
           <NavLink to="/events">Events</NavLink>
           <NavLink to="/faq">FAQ</NavLink>
           <NavLink to="/about">About Us</NavLink>
+          <NavLink to="/register">Register</NavLink>
           <NavLink to="/scheduling" className="nav-cta">
             Scheduling
           </NavLink>
@@ -196,6 +198,139 @@ function AboutPage() {
   )
 }
 
+function RegisterPage() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  })
+  const [error, setError] = useState<string | null>(null)
+  const [submitted, setSubmitted] = useState(false)
+
+  function handleChange(field: keyof typeof formData) {
+    return (event: React.ChangeEvent<HTMLInputElement>) => {
+      setFormData((prev) => ({ ...prev, [field]: event.target.value }))
+    }
+  }
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords don't match.")
+      return
+    }
+
+    if (formData.password.length < 8) {
+      setError("Password must be at least 8 characters.")
+      return
+    }
+
+    setError(null)
+    setSubmitted(true)
+  }
+
+  if (submitted) {
+    return (
+      <Layout>
+        <section className="page-section">
+          <div className="section-heading narrow">
+            <p className="eyebrow">Registration</p>
+            <h2>You're in, {formData.firstName}.</h2>
+            <p className="hero-text">
+              We've created your account. Head over to scheduling to get started.
+            </p>
+            <div className="hero-actions">
+              <NavLink to="/scheduling" className="primary-button">
+                Start scheduling
+              </NavLink>
+            </div>
+          </div>
+        </section>
+      </Layout>
+    )
+  }
+
+  return (
+    <Layout>
+      <section className="page-section">
+        <div className="section-heading narrow">
+          <p className="eyebrow">Register</p>
+          <h2>Create your Court Rebel account.</h2>
+        </div>
+        <form className="register-form" onSubmit={handleSubmit}>
+          <div className="form-row">
+            <label className="form-field">
+              <span>First name</span>
+              <input
+                type="text"
+                required
+                value={formData.firstName}
+                onChange={handleChange("firstName")}
+                autoComplete="given-name"
+              />
+            </label>
+            <label className="form-field">
+              <span>Last name</span>
+              <input
+                type="text"
+                required
+                value={formData.lastName}
+                onChange={handleChange("lastName")}
+                autoComplete="family-name"
+              />
+            </label>
+          </div>
+
+          <label className="form-field">
+            <span>Email</span>
+            <input
+              type="email"
+              required
+              value={formData.email}
+              onChange={handleChange("email")}
+              autoComplete="email"
+            />
+          </label>
+
+          <div className="form-row">
+            <label className="form-field">
+              <span>Password</span>
+              <input
+                type="password"
+                required
+                minLength={8}
+                value={formData.password}
+                onChange={handleChange("password")}
+                autoComplete="new-password"
+              />
+            </label>
+            <label className="form-field">
+              <span>Confirm password</span>
+              <input
+                type="password"
+                required
+                minLength={8}
+                value={formData.confirmPassword}
+                onChange={handleChange("confirmPassword")}
+                autoComplete="new-password"
+              />
+            </label>
+          </div>
+
+          {error && <p className="form-error">{error}</p>}
+
+          <button type="submit" className="primary-button">
+            Create account
+          </button>
+        </form>
+      </section>
+    </Layout>
+  )
+}
+
 function SchedulingPage() {
   return (
     <Layout>
@@ -225,6 +360,7 @@ function App() {
       <Route path="/events" element={<EventsPage />} />
       <Route path="/faq" element={<FaqPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="/scheduling" element={<SchedulingPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
