@@ -23,20 +23,50 @@ const eventHighlights = [
 
 const faqItems = [
   {
-    question: "Can Self Rep U handle sealed or restricted hearings?",
+    question: "Will I receive legal advice from Self Rep U?",
     answer:
-      "Probably, I don't know any of this stuff.",
+      "No.  Self Rep U provides general legal information and education, but does not offer personalized legal advice.",
   },
   {
-    question: "Do participants get reminders before hearings?",
+    question: "Can I discuss my specific case with Self Rep U?",
     answer:
-      "No, dingus.  We don't know your life",
+      "No. Self Rep U will not take questions about the facts of your specific case.  We will take questions about court procedures and general legal information.  If you ask us a question that is out of scope, we will let you know.",
   },
   {
-    question: "Who is this for?",
+    question: "Is Self Rep U associated with any law firm?",
     answer:
-      "Self Rep U is for YOU.",
+      "No. Self Rep U is an independent educational program and is not affiliated with any law firm.",
   },
+  {
+    question: "Is Self Rep U a court service?",
+    answer:
+      "No. Self Rep U is not connected with the Missouri courts, any bar association, or any other legal organization.  We are a privately held independent educational program.",
+  },
+  {
+    question: "Does Self Rep U replace the need for an attorney?",
+    answer:
+      "No. In most cases, representing yourself is a bad idea. Our guess is you already know that. Self Rep U will not offer personalized legal advice.  Self Rep U does not replace the need to consult a qualified attorney regarding any specific legal matter.",
+  },
+  {
+    question: "How long is each class?",
+    answer:
+      "Our goal is to have you in and out in 1 hour.  We know your time is valuable, and we are not going to waste your Friday night.  We offer real information in plain English in 1 hour.",
+  },
+  {
+    question: "Is this legal education?",
+    answer:
+      "The goal is not to turn you into a lawyer.  The goal is to give you the information you need to navigate the legal system with confidence.  We will not teach you how to practice law, but we will teach you how to understand the process and avoid common mistakes that derail cases before they ever reach a courtroom.",
+  },
+  {
+    question: "Is this the same as the Litigant Awareness Program required by the court?",
+    answer:
+      "No. If you are representing yourself, you will still be required to take the Litigant Awareness Program.  Self Rep U is a separate educational program that is not affiliated with the Missouri courts or any other legal organization.  It is designed to fill the gap between the Litigant Awareness Program and the courtroom, giving you practical information to help you navigate the legal system with confidence.",
+  },
+  {
+    question: "What question did I forget to ask?",
+    answer:
+      "Your goal is not to be a lawyer, but to be an informed participant in the legal process well enough to tell your story without getting derailed by procedure, legal jargon,  or objections.  Your goal should be to avioid major mistakes, missed deadlines, and saying the wrong thing.  Self Rep U is designed to help you do that.  We know protecitng your relationship with your children and financial stability is your top priority.",
+  }
 ]
 
 const schedulingSteps = [
@@ -69,8 +99,7 @@ function Layout({ children }: { children: ReactNode }) {
             <img src="/SelfRepU_full-color.png" alt="" />
           </NavLink>
           <div>
-            <p className="brand-name">Self Rep U</p>
-            <p className="brand-tag">Legal stuff and things</p>
+            <p className="brand-name">When it's Them vs. U</p>
           </div>
         </div>
 
@@ -78,15 +107,17 @@ function Layout({ children }: { children: ReactNode }) {
           <NavLink to="/events">Events</NavLink>
           <NavLink to="/faq">FAQ</NavLink>
           <NavLink to="/about">About Us</NavLink>
-          <NavLink to="/register">Register</NavLink>
           <NavLink to="/scheduling" className="nav-cta">
-            Scheduling
+            Class Schedule
+          </NavLink>
+          <NavLink to="/register" className="nav-cta-register">
+            Register
           </NavLink>
         </nav>
       </header>
 
       <section className="header-image-wrap" aria-label="Courtroom header image">
-        <img src="/courtroom-header.svg" alt="Courtroom interior with judge bench and seating" />
+        <img src="/courtBanner.png" alt="Courtroom interior with judge bench and seating" />
       </section>
 
       <main>
@@ -114,10 +145,10 @@ function HomePage() {
     <Layout>
       <section className="hero-section">
         <div className="hero-copy">
-          <p className="eyebrow">YOU CAN DO IT!</p>
-          <h1>That judge won't know what hit them.</h1>
+          <h1>Representing yourself in family court?
+            <br />Here's what you need to know.</h1>
           <p className="hero-text">
-            Self Rep U does stuff to help you navigate the legal system.
+            Self Rep U is a live, in-person education program for self-represented individuals in Missouri family law cases. We cover the vocabulary, the format, the procedural realities, and the common mistakes that derail cases before they ever reach a courtroom.
           </p>
           <div className="hero-actions">
             <NavLink to="/scheduling" className="primary-button">
@@ -181,17 +212,28 @@ function AboutPage() {
       <section className="page-section about-grid">
         <div>
           <p className="eyebrow">About Us</p>
-          <h2>We build confidence for real courtroom operations.</h2>
+          <h2>What is Self Rep U?</h2>
           <p className="hero-text">
-            Self Rep U is for those who manage and participate in self-representation.
+            If you're navigating Missouri family court without an attorney — whether by necessity or by choice — the system expects you to know the rules, both written and unwritten. Nobody tells you what they are until it may be too late. <br />
+            <br />
+            Self Rep U is a live, in-person education program for self-represented individuals in Missouri family law cases. We cover the vocabulary, the format, the procedural realities, and the common mistakes that derail cases before they ever reach a courtroom.<br />
+            <br />
+            This is not legal advice and we won’t teach you to be a lawyer. We won't review your case or tell you what to do in your specific situation. What we will do is help you understand how the process works — in plain English, taught by real experienced Missouri family law attorneys — before you walk in unprepared.  Empowering you to put your best foot forward.<br />
+            <br />
+            Self Rep U is for anyone facing divorce, custody, child support, or parenting plan cases in Missouri who cannot access or afford legal representation or has decided to go without legal representation.<br />
+            <br />
+            Classes are a 1-hour, structured presentation led by award winning, licensed Missouri attorneys experienced in family law matters. Topics vary by week, so please be sure to check our <a href="class-schedule">class schedule</a>.<br />
+            <br />
+            Not tied to a law firm. Not affiliated with Missouri courts. Completely independent.<br />
+            <br />
+            Sessions are held Friday evenings in St. Louis, Missouri. Seats are limited.
           </p>
         </div>
         <div className="quote-card">
           <p className="quote-text">
-            “Our mission is to reduce procedural friction so people can navigate the legal system faster and
-            with more clarity.”
+            “Our goal is not to make you feel better about a difficult situation, but to empower you to navigate the legal system with confidence.”
+            <p className="quote-meta">- Ryan L. Munro</p>
           </p>
-          <p className="quote-meta">Self Rep U Team</p>
         </div>
       </section>
     </Layout>

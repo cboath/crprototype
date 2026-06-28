@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Metronic Slab Narrow';
+  src: url('/fonts/Metronic-Slab-Narrow-W01-Bold.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
 :root {
   --bg: #e8f1eb;
   --bg-alt: #ffffff;
@@ -10,12 +17,12 @@
   --accent: #23af6a;
   --accent-secondary: #0e3142;
   --shadow-soft: 0 24px 60px rgba(6, 11, 8, 0.16);
-  --sans: 'Avenir Next', 'Trebuchet MS', sans-serif;
-  --heading: 'Gill Sans', 'Avenir Next Condensed', 'Trebuchet MS', sans-serif;
+  --sans: 'Metronic Slab Narrow', 'Avenir Next', 'Trebuchet MS', sans-serif;
+  --heading: 'Metronic Slab Narrow', 'Gill Sans', 'Avenir Next Condensed', 'Trebuchet MS', sans-serif;
 
   font: 18px/1.5 var(--sans);
   letter-spacing: 0.01em;
-  color: var(--text);
+  color: #0E3142;
   background:
     radial-gradient(circle at top left, rgba(31, 122, 197, 0.35), transparent 32%),
     radial-gradient(circle at bottom right, rgba(14, 49, 66, 0.12), transparent 28%),
@@ -67,7 +74,7 @@ h1,
 h2,
 h3 {
   font-family: var(--heading);
-  color: var(--text-h);
+  color: #0E3142;
   letter-spacing: -0.03em;
 }
 
