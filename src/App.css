@@ -222,7 +222,7 @@
 .quote-card {
   border-radius: 1.35rem;
   border: 1px solid rgba(14, 49, 66, 0.09);
-  background: rgba(255, 255, 255, 0.72);
+  background: #0E3142;
   backdrop-filter: blur(10px);
   padding: 1.4rem;
   text-align: left;
@@ -231,13 +231,14 @@
 .feature-card h3,
 .timeline-card h3 {
   margin-bottom: 0.65rem;
-  color: #0E3142;
+  color: #23AF24;
 }
 
 .feature-card p,
 .timeline-card p,
 .quote-meta {
-  color: #0E3142;
+  font-size: 0.88rem;
+  color: #D1D3D4;
 }
 
 .timeline-step {

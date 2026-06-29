@@ -191,7 +191,7 @@ function FaqPage() {
       <section className="page-section">
         <div className="section-heading">
           <p className="eyebrow">FAQ</p>
-          <h2>Answers for legal operations teams.</h2>
+          <h2>Frequently Asked Questions</h2>
         </div>
         <div className="faq-grid">
           {faqItems.map((item) => (
