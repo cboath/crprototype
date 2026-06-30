@@ -1,6 +1,6 @@
 import "./App.css"
-import { NavLink, Navigate, Route, Routes } from "react-router-dom"
-import { useState } from "react"
+import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom"
+import { useEffect, useId, useRef, useState } from "react"
 import type { FormEvent, ReactNode } from "react"
 
 const eventHighlights = [
@@ -90,9 +90,28 @@ const schedulingSteps = [
   },
 ]
 
-function Layout({ children }: { children: ReactNode }) {
+function Layout({ children, title }: { children: ReactNode; title: string }) {
+  const location = useLocation()
+  const mainRef = useRef<HTMLElement>(null)
+  const prevPathname = useRef(location.pathname)
+
+  useEffect(() => {
+    document.title = `${title} — Self Rep U`
+  }, [title])
+
+  useEffect(() => {
+    if (prevPathname.current !== location.pathname) {
+      mainRef.current?.focus()
+    }
+    prevPathname.current = location.pathname
+  }, [location.pathname])
+
   return (
     <div className="page-shell">
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       <header className="topbar">
         <div className="brand-block">
           <NavLink to="/" className="brand-mark" aria-label="Self Rep U home">
@@ -116,11 +135,11 @@ function Layout({ children }: { children: ReactNode }) {
         </nav>
       </header>
 
-      <section className="header-image-wrap" aria-label="Courtroom header image">
+      <section className="header-image-wrap">
         <img src="/courtBanner.png" alt="Courtroom interior with judge bench and seating" />
       </section>
 
-      <main>
+      <main id="main-content" tabIndex={-1} ref={mainRef}>
         {children}
       </main>
 
@@ -142,7 +161,7 @@ function Layout({ children }: { children: ReactNode }) {
 
 function HomePage() {
   return (
-    <Layout>
+    <Layout title="Representing yourself in family court">
       <section className="hero-section">
         <div className="hero-copy">
           <h1>Representing yourself in family court?
@@ -166,16 +185,16 @@ function HomePage() {
 
 function EventsPage() {
   return (
-    <Layout>
+    <Layout title="Events">
       <section className="page-section">
         <div className="section-heading">
           <p className="eyebrow">Events</p>
-          <h2>Calendar of upcoming legal events.</h2>
+          <h1>Calendar of upcoming legal events.</h1>
         </div>
         <div className="feature-grid">
           {eventHighlights.map((event) => (
             <article key={event.title} className="feature-card">
-              <h3>{event.title}</h3>
+              <h2>{event.title}</h2>
               <p>{event.description}</p>
             </article>
           ))}
@@ -187,16 +206,16 @@ function EventsPage() {
 
 function FaqPage() {
   return (
-    <Layout>
+    <Layout title="FAQ">
       <section className="page-section">
         <div className="section-heading">
           <p className="eyebrow">FAQ</p>
-          <h2>Frequently Asked Questions</h2>
+          <h1>Frequently Asked Questions</h1>
         </div>
         <div className="faq-grid">
           {faqItems.map((item) => (
             <article key={item.question} className="feature-card">
-              <h3>{item.question}</h3>
+              <h2>{item.question}</h2>
               <p>{item.answer}</p>
             </article>
           ))}
@@ -208,11 +227,11 @@ function FaqPage() {
 
 function AboutPage() {
   return (
-    <Layout>
+    <Layout title="About Us">
       <section className="page-section about-grid">
         <div>
           <p className="eyebrow">About Us</p>
-          <h2>What is Self Rep U?</h2>
+          <h1>What is Self Rep U?</h1>
           <p className="hero-text">
             If you're navigating Missouri family court without an attorney — whether by necessity or by choice — the system expects you to know the rules, both written and unwritten. Nobody tells you what they are until it may be too late. <br />
             <br />
@@ -222,19 +241,20 @@ function AboutPage() {
             <br />
             Self Rep U is for anyone facing divorce, custody, child support, or parenting plan cases in Missouri who cannot access or afford legal representation or has decided to go without legal representation.<br />
             <br />
-            Classes are a 1-hour, structured presentation led by award winning, licensed Missouri attorneys experienced in family law matters. Topics vary by week, so please be sure to check our <a href="class-schedule">class schedule</a>.<br />
+            Classes are a 1-hour, structured presentation led by award winning, licensed Missouri attorneys experienced in family law matters. Topics vary by week, so please be sure to check our{" "}
+            <NavLink to="/scheduling">class schedule</NavLink>.<br />
             <br />
             Not tied to a law firm. Not affiliated with Missouri courts. Completely independent.<br />
             <br />
             Sessions are held Friday evenings in St. Louis, Missouri. Seats are limited.
           </p>
         </div>
-        <div className="quote-card">
+        <blockquote className="quote-card">
           <p className="quote-text">
             “Our goal is not to make you feel better about a difficult situation, but to empower you to navigate the legal system with confidence.”
-            <p className="quote-meta">- Ryan L. Munro</p>
           </p>
-        </div>
+          <footer className="quote-meta">— Ryan L. Munro</footer>
+        </blockquote>
       </section>
     </Layout>
   )
@@ -250,6 +270,7 @@ function RegisterPage() {
   })
   const [error, setError] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
+  const errorId = useId()
 
   function handleChange(field: keyof typeof formData) {
     return (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -276,11 +297,11 @@ function RegisterPage() {
 
   if (submitted) {
     return (
-      <Layout>
+      <Layout title="Registration complete">
         <section className="page-section">
           <div className="section-heading narrow">
             <p className="eyebrow">Registration</p>
-            <h2>You're in, {formData.firstName}.</h2>
+            <h1>You're in, {formData.firstName}.</h1>
             <p className="hero-text">
               We've created your account. Head over to scheduling to get started.
             </p>
@@ -296,11 +317,11 @@ function RegisterPage() {
   }
 
   return (
-    <Layout>
+    <Layout title="Register">
       <section className="page-section">
         <div className="section-heading narrow">
           <p className="eyebrow">Register</p>
-          <h2>Create your Self Rep U account.</h2>
+          <h1>Create your Self Rep U account.</h1>
         </div>
         <form className="register-form" onSubmit={handleSubmit}>
           <div className="form-row">
@@ -347,6 +368,8 @@ function RegisterPage() {
                 value={formData.password}
                 onChange={handleChange("password")}
                 autoComplete="new-password"
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? errorId : undefined}
               />
             </label>
             <label className="form-field">
@@ -358,11 +381,17 @@ function RegisterPage() {
                 value={formData.confirmPassword}
                 onChange={handleChange("confirmPassword")}
                 autoComplete="new-password"
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? errorId : undefined}
               />
             </label>
           </div>
 
-          {error && <p className="form-error">{error}</p>}
+          {error && (
+            <p className="form-error" role="alert" id={errorId}>
+              {error}
+            </p>
+          )}
 
           <button type="submit" className="primary-button">
             Create account
@@ -375,17 +404,17 @@ function RegisterPage() {
 
 function SchedulingPage() {
   return (
-    <Layout>
+    <Layout title="Scheduling">
       <section className="page-section">
         <div className="section-heading narrow">
           <p className="eyebrow">Scheduling</p>
-          <h2>From filing windows to hearing day, keep everyone aligned.</h2>
+          <h1>From filing windows to hearing day, keep everyone aligned.</h1>
         </div>
         <div className="timeline-grid">
           {schedulingSteps.map((item) => (
             <article key={item.step} className="timeline-card">
               <p className="timeline-step">{item.step}</p>
-              <h3>{item.title}</h3>
+              <h2>{item.title}</h2>
               <p>{item.detail}</p>
             </article>
           ))}
