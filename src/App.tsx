@@ -54,22 +54,28 @@ const faqItems = [
 
 const schedulingSteps = [
   {
-    step: "01",
-    title: "Do something that gets you into court.",
+    step: "Friday, August 7, 2026",
+    title: "The Decision to Go Alone?  Discussion about the wisdom, knowledge and temperament of going alone.",
     detail:
-      "Cheat on your ex.  Punch a dude.  Rob a bank.  Totally up to you.",
+      "Covering basic organization needs for case initiation, filing procedures, evidence, deadlines, court rules, and navigating Missouri family-law",
   },
   {
-    step: "02",
-    title: "Think you can out-smart the system.",
+    step: "Friday, August 14, 2026",
+    title: "The Primer - learning the language of the legal system.",
     detail:
-      "Self explanatory.",
+      "They speak a different language; so it is time to learn what they are saying.",
   },
   {
-    step: "03",
-    title: "Come get some advice from the pros.",
+    step: "Friday, August 21, 2026",
+    title: "Court Basics",
     detail:
-      "Learn how and when to properly say NOT GUILTY.",
+      "What to expect the very first time you walk in the courthouse.",
+  },
+    {
+    step: "More class dates to be announced",
+    title: "",
+    detail:
+      "",
   },
 ]
 
@@ -154,7 +160,7 @@ function HomePage() {
           </p>
           <div className="hero-actions">
             <NavLink to="/scheduling" className="primary-button">
-              Start scheduling
+              Class schedule
             </NavLink>
           </div>
         </div>
@@ -169,7 +175,6 @@ function FaqPage() {
     <Layout title="FAQ">
       <section className="page-section">
         <div className="section-heading">
-          <p className="eyebrow">FAQ</p>
           <h1>Frequently Asked Questions</h1>
         </div>
         <div className="faq-grid">
