@@ -18,7 +18,7 @@
 
 .page-shell {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   padding-bottom: 2rem;
 }
 
@@ -49,11 +49,17 @@
 }
 
 .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
   padding: 1.4rem 0;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .brand-block {
