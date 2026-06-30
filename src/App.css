@@ -324,6 +324,12 @@
   flex-wrap: wrap;
 }
 
+.footer-mark {
+  width: 4rem;
+  height: 3.5rem;
+  object-fit: cover;
+}
+
 .register-form {
   display: flex;
   flex-direction: column;

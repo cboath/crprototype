@@ -71,7 +71,7 @@ const schedulingSteps = [
     detail:
       "What to expect the very first time you walk in the courthouse.",
   },
-    {
+  {
     step: "More class dates to be announced",
     title: "",
     detail:
@@ -134,14 +134,10 @@ function Layout({ children, title }: { children: ReactNode; title: string }) {
 
       <footer className="site-footer">
         <div className="site-footer-row">
-          <p>Self Rep U</p>
-          <p>Purpose-built happy times.</p>
+          <img className="footer-mark" src="/SelfRepU_full-color.png" alt="" />
         </div>
         <p className="legal-disclaimer">
-          The information provided on this site is for general informational purposes only and
-          does not constitute legal advice. Use of Self Rep U does not create an
-          attorney-client relationship. Consult a qualified attorney regarding any specific legal
-          matter. &copy; {new Date().getFullYear()} Self Rep U. All rights reserved.
+          The information provided on this site is for general informational purposes only and does not constitute legal advice. Use of Self Rep U does not create an attorney-client relationship nor does it replace the use of an attorney. Consult a qualified attorney regarding any specific legal matter. ©2026 Court Rebel, LLC. All rights reserved.
         </p>
       </footer>
     </div>
