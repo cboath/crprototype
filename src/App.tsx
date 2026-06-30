@@ -3,23 +3,6 @@ import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { useEffect, useId, useRef, useState } from "react"
 import type { FormEvent, ReactNode } from "react"
 
-const eventHighlights = [
-  {
-    title: "First Bestest Ever Workshops",
-    description:
-      "Weekly continuing-education sessions for self-represented litigants.",
-  },
-  {
-    title: "Pre-Trial Calendar Conferences",
-    description:
-      "Learn how to do some law shit.",
-  },
-  {
-    title: "Community Court Programs",
-    description:
-      "Publish legal aid and outreach events with seat limits, waitlists, and translated notices.",
-  },
-]
 
 const faqItems = [
   {
@@ -123,14 +106,14 @@ function Layout({ children, title }: { children: ReactNode; title: string }) {
         </div>
 
         <nav className="topnav" aria-label="Primary">
-          <NavLink to="/events">Events</NavLink>
+          <NavLink to="/">Home</NavLink>
           <NavLink to="/faq">FAQ</NavLink>
           <NavLink to="/about">About Us</NavLink>
           <NavLink to="/scheduling" className="nav-cta">
             Class Schedule
           </NavLink>
           <NavLink to="/register" className="nav-cta-register">
-            Register
+            Registrar
           </NavLink>
         </nav>
       </header>
@@ -173,9 +156,6 @@ function HomePage() {
             <NavLink to="/scheduling" className="primary-button">
               Start scheduling
             </NavLink>
-            <NavLink to="/events" className="secondary-button">
-              View event types
-            </NavLink>
           </div>
         </div>
       </section>
@@ -183,26 +163,6 @@ function HomePage() {
   )
 }
 
-function EventsPage() {
-  return (
-    <Layout title="Events">
-      <section className="page-section">
-        <div className="section-heading">
-          <p className="eyebrow">Events</p>
-          <h1>Calendar of upcoming legal events.</h1>
-        </div>
-        <div className="feature-grid">
-          {eventHighlights.map((event) => (
-            <article key={event.title} className="feature-card">
-              <h2>{event.title}</h2>
-              <p>{event.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-    </Layout>
-  )
-}
 
 function FaqPage() {
   return (
@@ -264,6 +224,7 @@ function RegisterPage() {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+    phone: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -317,10 +278,10 @@ function RegisterPage() {
   }
 
   return (
-    <Layout title="Register">
+    <Layout title="Registrar">
       <section className="page-section">
         <div className="section-heading narrow">
-          <p className="eyebrow">Register</p>
+          <p className="eyebrow">Registrar</p>
           <h1>Create your Self Rep U account.</h1>
         </div>
         <form className="register-form" onSubmit={handleSubmit}>
@@ -346,6 +307,17 @@ function RegisterPage() {
               />
             </label>
           </div>
+
+          <label className="form-field">
+            <span>Phone number</span>
+            <input
+              type="tel"
+              required
+              value={formData.phone}
+              onChange={handleChange("phone")}
+              autoComplete="tel"
+            />
+          </label>
 
           <label className="form-field">
             <span>Email</span>
@@ -428,7 +400,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/events" element={<EventsPage />} />
+
       <Route path="/faq" element={<FaqPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/register" element={<RegisterPage />} />

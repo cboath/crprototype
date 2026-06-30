@@ -144,21 +144,24 @@
   border: 2px solid transparent;
 }
 
-.nav-cta,
 .primary-button {
   color: #0E3142;
   background: var(--accent);
   box-shadow: 0 14px 32px rgba(35, 175, 106, 0.3);
 }
 
+.nav-cta,
 .nav-cta-register {
   color: #0E3142;
-  background: var(--accent);
+  background: transparent;
+  border-color: var(--border-strong);
 }
 
 .nav-cta.active,
 .nav-cta-register.active {
+  background: var(--accent);
   border-color: var(--accent-secondary);
+  box-shadow: 0 14px 32px rgba(35, 175, 106, 0.3);
 }
 
 .secondary-button {
