@@ -330,6 +330,33 @@
   object-fit: cover;
 }
 
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.social-link {
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  color: #0E3142;
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.58);
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.social-link:hover {
+  background: var(--accent);
+}
+
+.social-link svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
 .register-form {
   display: flex;
   flex-direction: column;
